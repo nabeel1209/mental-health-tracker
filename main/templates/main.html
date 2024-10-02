@@ -152,36 +152,37 @@
     }
     document.getElementById("mood_entry_cards").className = classNameString;
     document.getElementById("mood_entry_cards").innerHTML = htmlString;
-    const modal = document.getElementById('crudModal');
-  const modalContent = document.getElementById('crudModalContent');
 
-  function showModal() {
-      const modal = document.getElementById('crudModal');
-      const modalContent = document.getElementById('crudModalContent');
-
-      modal.classList.remove('hidden'); 
-      setTimeout(() => {
-        modalContent.classList.remove('opacity-0', 'scale-95');
-        modalContent.classList.add('opacity-100', 'scale-100');
-      }, 50); 
-  }
-
-  function hideModal() {
-      const modal = document.getElementById('crudModal');
-      const modalContent = document.getElementById('crudModalContent');
-
-      modalContent.classList.remove('opacity-100', 'scale-100');
-      modalContent.classList.add('opacity-0', 'scale-95');
-
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 150); 
-  }
-
-  document.getElementById("cancelButton").addEventListener("click", hideModal);
-  document.getElementById("closeModalBtn").addEventListener("click", hideModal);
 }
 refreshMoodEntries();
+const modal = document.getElementById('crudModal');
+const modalContent = document.getElementById('crudModalContent');
+
+function showModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modal.classList.remove('hidden'); 
+    setTimeout(() => {
+      modalContent.classList.remove('opacity-0', 'scale-95');
+      modalContent.classList.add('opacity-100', 'scale-100');
+    }, 50); 
+}
+
+function hideModal() {
+    const modal = document.getElementById('crudModal');
+    const modalContent = document.getElementById('crudModalContent');
+
+    modalContent.classList.remove('opacity-100', 'scale-100');
+    modalContent.classList.add('opacity-0', 'scale-95');
+
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 150); 
+}
+
+document.getElementById("cancelButton").addEventListener("click", hideModal);
+document.getElementById("closeModalBtn").addEventListener("click", hideModal);
 function addMoodEntry() {
   fetch("{% url 'main:add_mood_entry_ajax' %}", {
     method: "POST",
